@@ -1,0 +1,36 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Question {
+  id        Int       @id @default(autoincrement())
+  text      String
+  createdAt DateTime  @default(now())
+  attempts  Attempt[]
+}
+
+model Attempt {
+  id         Int      @id @default(autoincrement())
+  questionId Int
+  answer     String
+  createdAt  DateTime @default(now())
+  question   Question @relation(fields: [questionId], references: [id])
+  score      Score?
+}
+
+model Score {
+  id        Int      @id @default(autoincrement())
+  attemptId Int      @unique
+  value     Int
+  rationale String?
+  rubric    Json?
+  createdAt DateTime @default(now())
+  attempt   Attempt  @relation(fields: [attemptId], references: [id])
+}
