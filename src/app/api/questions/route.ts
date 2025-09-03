@@ -3,14 +3,11 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 
 export async function GET() {
-    try {
-        const questions = await prisma.question.findMany({
-            orderBy: { id: "asc" },
-            // select: { id: true, text: true } // optional: limit fields
-        });
-        return NextResponse.json({ data: questions });
-    } catch (err) {
-        console.error("GET /api/questions error:", err);
-        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
-    }
+    const questions = await prisma.question.findMany({ orderBy: { id: "asc" } });
+    return NextResponse.json({ data: questions });
+}
+
+// Some environments send HEAD for prefetch. Return 200 with no body.
+export async function HEAD() {
+    return new Response(null, { status: 200 });
 }
