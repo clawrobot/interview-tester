@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import MicAnswer from "@/components/MicAnswer";
 
 type Question = { id: number; text: string };
 
@@ -74,6 +75,10 @@ export default function PracticeForm({ questions }: { questions: Question[] }) {
 
                     <div className="space-y-2">
                         <Label htmlFor="answer">Your answer</Label>
+
+                        {/* Mic recorder inserts transcript into the same answer state */}
+                        <MicAnswer onTranscript={(text) => setAnswer(text)} />
+
                         <Textarea
                             id="answer"
                             placeholder="Type your answer here..."
@@ -82,6 +87,7 @@ export default function PracticeForm({ questions }: { questions: Question[] }) {
                             rows={6}
                         />
                     </div>
+
 
                     <div className="flex items-center gap-3">
                         <Button type="submit" disabled={status === "submitting" || !answer.trim()}>
