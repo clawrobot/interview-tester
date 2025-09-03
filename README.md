@@ -1,11 +1,11 @@
-# 🎤 Interview Tester (AI-Powered)
+# AI Interrview Tester
 
 An AI-driven web app to **practice interview questions**, get **structured feedback**, and even answer using your **voice**.  
 Built with **Next.js, Prisma, Tailwind, shadcn/ui, and OpenAI APIs**.
 
 ---
 
-## ✨ Features
+##  Features
 - ✅ Answer **common interview questions**
 - ✅ Get **AI-powered scores (0–100)** and written feedback
 - ✅ Track multiple attempts per question
@@ -15,7 +15,7 @@ Built with **Next.js, Prisma, Tailwind, shadcn/ui, and OpenAI APIs**.
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 - **Frontend:** Next.js 15 + React
 - **UI:** TailwindCSS + shadcn/ui
 - **Database:** Prisma + SQLite
@@ -24,7 +24,7 @@ Built with **Next.js, Prisma, Tailwind, shadcn/ui, and OpenAI APIs**.
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Clone the repo
 ```bash
@@ -50,10 +50,10 @@ Create a file named **.env.local** in the project root:
 ```ini
 OPENAI_API_KEY=sk-...your_openai_key_here
 ```
-⚠️ Never commit this file!
+ Never commit this file!
 
 ### 5. Run the app
 ```bash
 pnpm dev
 ```
-Then open 👉 [http://localhost:3000](http://localhost:3000)
+Then open  [http://localhost:3000](http://localhost:3000)
