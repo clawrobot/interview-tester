@@ -37,8 +37,13 @@ export default function PracticeForm({ questions }: { questions: Question[] }) {
             }
 
             const data = await res.json();
+            // data.data.score.value, data.data.score.rationale
             setStatus("success");
-            setMessage(`Saved attempt #${data?.data?.id}. (Scoring comes next!)`);
+            setMessage(
+                `✅ Saved attempt #${data?.data?.attempt?.id}\n\n` +
+                `Score: ${data?.data?.score?.value}/100\n\n` +
+                `${data?.data?.score?.rationale}`
+            );
             setAnswer("");
         } catch (err: any) {
             setStatus("error");
@@ -94,18 +99,21 @@ export default function PracticeForm({ questions }: { questions: Question[] }) {
                     </div>
 
                     {status !== "idle" && (
-                        <p
+                        <div
                             className={
                                 status === "success"
-                                    ? "text-sm text-green-600"
+                                    ? "mt-4 p-4 rounded-xl border bg-green-50 text-green-800"
                                     : status === "error"
-                                        ? "text-sm text-red-600"
-                                        : "text-sm text-muted-foreground"
+                                        ? "mt-4 p-4 rounded-xl border bg-red-50 text-red-800"
+                                        : "mt-4 p-4 rounded-xl border bg-gray-50 text-gray-700"
                             }
                         >
-                            {message}
-                        </p>
+                            <pre className="whitespace-pre-line m-0 text-sm leading-relaxed">
+                                {message}
+                            </pre>
+                        </div>
                     )}
+
                 </form>
             </CardContent>
         </Card>
