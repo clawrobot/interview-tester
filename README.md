@@ -1,4 +1,4 @@
-# AI Interrview Tester
+# AI Interview Tester
 
 An AI-driven web app to **practice interview questions**, get **structured feedback**, and even answer using your **voice**.  
 Built with **Next.js, Prisma, Tailwind, shadcn/ui, and OpenAI APIs**.
